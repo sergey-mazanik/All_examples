@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "597e925f-c012-4f26-a28f-368215837645",
+		"name": "ActivePlatform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 303\", function () {\r",
+							"    pm.response.to.have.status(303);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.msg).to.eql(\"Поздравляем! Вы успешно прошли задание!\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://demo1152609.mockable.io/users",
+					"protocol": "http",
+					"host": [
+						"demo1152609",
+						"mockable",
+						"io"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.msg).to.eql(\"Задание 2 успешно выполнено.\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "123412341234",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://demo1152609.mockable.io/create/user",
+					"protocol": "http",
+					"host": [
+						"demo1152609",
+						"mockable",
+						"io"
+					],
+					"path": [
+						"create",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.msg).to.eql(\"Задание 3 успешно выполнено.\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "123412341234",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://demo1152609.mockable.io/update/user",
+					"protocol": "http",
+					"host": [
+						"demo1152609",
+						"mockable",
+						"io"
+					],
+					"path": [
+						"update",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.msg).to.eql(\"Пользователь успешно удалён\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "api-token",
+						"value": "123eboy123e123r123",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://demo1152609.mockable.io/delete/user",
+					"protocol": "http",
+					"host": [
+						"demo1152609",
+						"mockable",
+						"io"
+					],
+					"path": [
+						"delete",
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

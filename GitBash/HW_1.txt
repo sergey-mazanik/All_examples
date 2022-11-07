@@ -1,0 +1,76 @@
+1) Посмотреть где я - pwd
+
+2) Создать папку - mkdir FolderName
+
+3) Зайти в папку - cd FolderName/
+
+4) Создать 3 папки - mkdir dir_1 dir_2 dir_3
+
+5) Зайти в любоую папку - cd dir_1
+
+6) Создать 5 файлов (3 txt, 2 json) - touch firsttxt.txt secondtxt.txt thirdtxt.txt fourthjson.json fifthjson.json
+
+7) Создать 3 папки - mkdir first second third
+
+8. Вывести список содержимого папки - ls -la
+
+9) + Открыть любой txt файл - cat firsttxt.txt
+
+10) + написать туда что-нибудь, любой текст - cat >> firsttxt.txt
+													1)first
+													2)second
+
+11) + сохранить и выйти. - Ctrl+C
+
+12) Выйти из папки на уровень выше - cd ..
+
+13) переместить любые 2 файла, которые вы создали, в любую другую папку - mv {firsttxt.txt,secondtxt.txt} ../dir_2
+
+14) скопировать любые 2 файла, которые вы создали, в любую другую папку - cp {fifthjson.json,fourthjson.json} ./first
+
+15) Найти файл по имени - find . -name firsttxt.txt
+
+16) просмотреть содержимое в реальном времени (команда grep) изучите как она работает - grep command thirdtxt.txt
+
+17) вывести несколько первых строк из текстового файла - head -3 thirdtxt.txt
+
+18) вывести несколько последних строк из текстового файла - tail -2 thirdtxt.txt
+
+19) просмотреть содержимое длинного файла (команда less) изучите как она работает - less thirdtxt.txt
+
+20) вывести дату и время - date
+
+=========
+
+Задание *
+1) Отправить http запрос на сервер.
+http://162.55.220.72:5005/terminal-hw-request
+
+curl "http://162.55.220.72:5006/terminal-hw-request"
+curl "http://162.55.220.72:5005/get_method?name='Sergey_Mazanik'&age=32"
+
+2) Написать скрипт который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13
+
+	Скрипт:
+		#! /bin/bash
+
+		# Зайти в папку
+		cd ~/Desktop/Script
+		# Создать 3 папки
+		mkdir folder1 folder2 folder3
+		# Зайти в любоую папку
+		cd folder1/
+		# Создать 5 файлов (3 txt, 2 json)
+		touch file1.txt file2.txt file3.txt file4.json file5.json
+		# Создать 3 папки
+		mkdir folder4 folder5 folder6
+		# Вывести список содержимого папки
+		ls -la
+		# Переместить любые 2 файла, которые вы создали, в любую другую папку.
+		mv {file1.txt,file2.txt} ./folder4
+
+	В терминалем делаем скрип исполняемым:
+	chmod +x script.sh
+	
+	Запускаем скрипт:
+	./script.sh
