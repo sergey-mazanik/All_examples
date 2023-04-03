@@ -1,0 +1,565 @@
+{
+	"info": {
+		"_postman_id": "27246f7c-9ead-4071-9e78-877e764fb46c",
+		"name": "CrashTesting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20129923"
+	},
+	"item": [
+		{
+			"name": "MainPage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://a0406371.xsph.ru/",
+					"protocol": "http",
+					"host": [
+						"a0406371",
+						"xsph",
+						"ru"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AboutUs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://a0406371.xsph.ru/%d0%be-%d0%bd%d0%b0%d1%81/",
+					"protocol": "http",
+					"host": [
+						"a0406371",
+						"xsph",
+						"ru"
+					],
+					"path": [
+						"%d0%be-%d0%bd%d0%b0%d1%81",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Blog",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://a0406371.xsph.ru/%d0%b1%d0%bb%d0%be%d0%b3/",
+					"protocol": "http",
+					"host": [
+						"a0406371",
+						"xsph",
+						"ru"
+					],
+					"path": [
+						"%d0%b1%d0%bb%d0%be%d0%b3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contacts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://a0406371.xsph.ru/%d0%ba%d0%be%d0%bd%d1%82%d0%b0%d0%ba%d1%82%d1%8b/",
+					"protocol": "http",
+					"host": [
+						"a0406371",
+						"xsph",
+						"ru"
+					],
+					"path": [
+						"%d0%ba%d0%be%d0%bd%d1%82%d0%b0%d0%ba%d1%82%d1%8b",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://a0406371.xsph.ru/wp-login.php?pass=1",
+					"protocol": "http",
+					"host": [
+						"a0406371",
+						"xsph",
+						"ru"
+					],
+					"path": [
+						"wp-login.php"
+					],
+					"query": [
+						{
+							"key": "pass",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateCommentNoAuth",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function guid() {\r",
+							"    function _p8(s) {\r",
+							"        var p = (Math.random().toString(16)+\"000000000\").substr(2,8);\r",
+							"        return s ? \"-\" + p.substr(0,4) + \"-\" + p.substr(4,4) : p ;\r",
+							"    }\r",
+							"    return _p8() + _p8(true) + _p8(true) + _p8();\r",
+							"}\r",
+							"\r",
+							"var guid = guid();\r",
+							"\r",
+							"pm.environment.set(\"author\", guid);\r",
+							"pm.environment.set(\"comment\", guid);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Comment is displayed\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"comment\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Author is displayed\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"author\"));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "author",
+							"value": "{{author}}",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test@test.com",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "comment",
+							"value": "{{comment}}",
+							"type": "text"
+						},
+						{
+							"key": "submit",
+							"value": "Отправить комментарий",
+							"type": "text"
+						},
+						{
+							"key": "comment_post_ID",
+							"value": "72",
+							"type": "text"
+						},
+						{
+							"key": "comment_parent",
+							"value": "0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://a0406371.xsph.ru/wp-comments-post.php",
+					"protocol": "http",
+					"host": [
+						"a0406371",
+						"xsph",
+						"ru"
+					],
+					"path": [
+						"wp-comments-post.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateCommentAuth",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function guid() {\r",
+							"    function _p8(s) {\r",
+							"        var p = (Math.random().toString(16)+\"000000000\").substr(2,8);\r",
+							"        return s ? \"-\" + p.substr(0,4) + \"-\" + p.substr(4,4) : p ;\r",
+							"    }\r",
+							"    return _p8() + _p8(true) + _p8(true) + _p8();\r",
+							"}\r",
+							"\r",
+							"var guid = guid();\r",
+							"\r",
+							"pm.environment.set(\"comment\", guid);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Comment is displayed\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"comment\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Author is authorized\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Вы вошли как SergeyTest\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "RJhDB5!fi^z6Hnw@",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "SergeyTest",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "comment",
+							"value": "{{comment}}",
+							"type": "text"
+						},
+						{
+							"key": "submit",
+							"value": "Отправить комментарий",
+							"type": "text"
+						},
+						{
+							"key": "comment_post_ID",
+							"value": "72",
+							"type": "text"
+						},
+						{
+							"key": "comment_parent",
+							"value": "0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://a0406371.xsph.ru/wp-comments-post.php",
+					"protocol": "http",
+					"host": [
+						"a0406371",
+						"xsph",
+						"ru"
+					],
+					"path": [
+						"wp-comments-post.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ErrorTextNoAuthor",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Error text is correct\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"пожалуйста, заполните необходимые поля (имя, e-mail).\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "author",
+							"value": "{{author}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "test@test.com",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "comment",
+							"value": "{{comment}}",
+							"type": "text"
+						},
+						{
+							"key": "submit",
+							"value": "Отправить комментарий",
+							"type": "text"
+						},
+						{
+							"key": "comment_post_ID",
+							"value": "645",
+							"type": "text"
+						},
+						{
+							"key": "comment_parent",
+							"value": "0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://a0406371.xsph.ru/wp-comments-post.php",
+					"protocol": "http",
+					"host": [
+						"a0406371",
+						"xsph",
+						"ru"
+					],
+					"path": [
+						"wp-comments-post.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ErrorTextNoEmail",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Error text is correct\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"пожалуйста, заполните необходимые поля (имя, e-mail).\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "author",
+							"value": "{{author}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "test@test.com",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "comment",
+							"value": "{{comment}}",
+							"type": "text"
+						},
+						{
+							"key": "submit",
+							"value": "Отправить комментарий",
+							"type": "text"
+						},
+						{
+							"key": "comment_post_ID",
+							"value": "645",
+							"type": "text"
+						},
+						{
+							"key": "comment_parent",
+							"value": "0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://a0406371.xsph.ru/wp-comments-post.php",
+					"protocol": "http",
+					"host": [
+						"a0406371",
+						"xsph",
+						"ru"
+					],
+					"path": [
+						"wp-comments-post.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
